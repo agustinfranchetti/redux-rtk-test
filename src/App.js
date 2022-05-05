@@ -1,15 +1,22 @@
-import './App.css';
-import React from 'react';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment, incrementByAmount, decrementByAmount } from "./redux/counter";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = React.useState(0)
+export default function App() {
+  const { count } = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
   return (
     <div className="App">
       <h1> The count is: {count}</h1>
-      <button onClick={()=> setCount(count+1)}>Increment</button>
-      <button onClick={()=> setCount(count-1)}>Decrement</button>
+      <button onClick={() => dispatch(increment())}>increment</button>
+      <button onClick={() => dispatch(decrement())}>decrement</button>
+      <button onClick={() => dispatch(incrementByAmount(10))}>
+        Increment by 10
+      </button>
+      <button onClick={() => dispatch(decrementByAmount(10))}>
+      Decrement by 10
+      </button>
     </div>
   );
 }
-
-export default App;
