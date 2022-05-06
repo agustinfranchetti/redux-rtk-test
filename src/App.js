@@ -1,10 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment, incrementByAmount, decrementByAmount } from "./redux/counter";
+import { widthIncrease, widthDecrease} from "./redux/boxWidth";
 import "./App.css";
 
 export default function App() {
   const { count } = useSelector((state) => state.counter);
+  const { width } = useSelector((state) => state.boxWidth);
   const dispatch = useDispatch();
   return (
     <div className="App">
@@ -17,6 +19,11 @@ export default function App() {
       <button onClick={() => dispatch(decrementByAmount(10))}>
       Decrement by 10
       </button>
+      <div class="square" style={{width: width + '%'}}>
+        <p class="text" >El width es {width}</p>
+      </div>
+        <button onClick={() => dispatch(widthIncrease())}>increment</button>
+        <button onClick={() => dispatch(widthDecrease())}>decrement</button>
     </div>
   );
 }
