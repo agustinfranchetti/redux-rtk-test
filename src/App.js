@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment, incrementByAmount, decrementByAmount } from "./redux/counter";
-import { widthIncrease, widthDecrease} from "./redux/boxWidth";
+import { decrement, increment, incrementByAmount, decrementByAmount } from "./features/counter/counterSlice";
+import { widthIncrease, widthDecrease} from "./features/boxWidth/boxWidth";
 import "./App.css";
 
 export default function App() {
