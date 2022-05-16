@@ -1,24 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { widthIncrease, widthDecrease} from "./boxWidthSlice";
 
-export const widthModifier = createSlice({
-  name: "boxWidth",
-  initialState: {
-    width: 10
-  },
-  reducers: {
-    widthIncrease: (state) => {
-      state.width += 10;
-    },
-    widthDecrease: (state) => {
-      state.width -= 10;
-    }
-  }
-});
-
-// Action creators are generated for each case reducer function
-export const {
-  widthIncrease,
-  widthDecrease,
-} = widthModifier.actions;
-
-export default widthModifier.reducer;
+export default function BoxWidth() {
+  const { width } = useSelector((state) => state.boxWidth);
+  const dispatch = useDispatch();
+  return (
+    <div className="BoxWidth">
+      <div class="square" style={{width: width + '%'}}>
+        <p class="text" >El width es {width}</p>
+      </div>
+        <button onClick={() => dispatch(widthIncrease())}>increment</button>
+        <button onClick={() => dispatch(widthDecrease())}>decrement</button>
+    </div>
+  );
+}
