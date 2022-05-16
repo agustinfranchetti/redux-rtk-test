@@ -4,7 +4,6 @@ import Pokemon from "./Pokemon";
 
 export default function PokemonList() {
     const { data } = useGetAllPokemonQuery();
-    console.log(data)
     return (
         <div className="PokemonList">
             {data.results.map((pokemon) => (

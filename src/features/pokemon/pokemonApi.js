@@ -7,7 +7,7 @@ export const pokemonApi = createApi({
     }),
     endpoints: (builder) => ({
         getAllPokemon: builder.query({
-          query: () => "/pokemon/?limit=100"
+          query: () => "/pokemon/?limit=10"
         }),
         getPokemonById: builder.mutation({
           query: ({ id, ...rest }) => ({
