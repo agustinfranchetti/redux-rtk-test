@@ -4,16 +4,15 @@ import { CardContent } from "@mui/material";
 import { Typography } from "@mui/material";
 import { CardMedia } from "@mui/material";
 import { useEffect, useState } from "react";
-import { style, width } from "@mui/system";
-
 
 const Pokemon =(props) => {
     const [imageUrl, setImageUrl] = useState(null);
+    //[] al final hace que el useEffect se ejecute luego de montado el componente
     useEffect(() => {
         fetch(props.url)
-    .then(response => response.json())
-    .then(data => {
-        setImageUrl(data.sprites.front_default)
+        .then(response => response.json())
+        .then(data => {
+            setImageUrl(data.sprites.front_default)
     });}, []);
 
     return (
