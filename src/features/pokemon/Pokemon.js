@@ -13,7 +13,7 @@ const Pokemon =(props) => {
         fetch(props.url)
     .then(response => response.json())
     .then(data => {
-        setImageUrl(data.sprites.other.dream_world.front_default)
+        setImageUrl(data.sprites.front_default)
     });}, []);
 
     return (
@@ -29,7 +29,7 @@ const Pokemon =(props) => {
                 }
                 />
                 <CardContent>
-                    <Typography variant="h5" >
+                    <Typography variant="h4" >
                         {props.name}
                     </Typography>
                 </CardContent>
