@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { widthIncrease, widthDecrease} from "./boxWidthSlice";
+import { Button } from "@mui/material";
 
 export default function BoxWidth() {
   const { width } = useSelector((state) => state.boxWidth);
@@ -9,9 +10,11 @@ export default function BoxWidth() {
     <div className="BoxWidth">
       <div class="square" style={{width: width + '%'}}>
         <p class="text" >El width es {width}</p>
+      </div >
+      <div className="incrementDecrementBtn">
+        <Button variant="outlined" color="error" onClick={() => dispatch(widthDecrease())}>decrement</Button>
+        <Button variant="outlined"  color="success" onClick={() => dispatch(widthIncrease())}>increment</Button>
       </div>
-        <button onClick={() => dispatch(widthIncrease())}>increment</button>
-        <button onClick={() => dispatch(widthDecrease())}>decrement</button>
     </div>
   );
 }

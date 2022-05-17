@@ -1,11 +1,41 @@
 import React from "react";
+import Card from '@mui/material/Card';
+import { CardContent } from "@mui/material";
+import { Typography } from "@mui/material";
+import { CardMedia } from "@mui/material";
+import { useEffect, useState } from "react";
+import { style, width } from "@mui/system";
+
 
 const Pokemon =(props) => {
-    return  <div>
-        ----------------------------
-        <h4>name: {props.name}</h4>
-        <h5>url: {props.url}</h5>
-    </div>
+    const [imageUrl, setImageUrl] = useState(null);
+    useEffect(() => {
+        fetch(props.url)
+    .then(response => response.json())
+    .then(data => {
+        setImageUrl(data.sprites.other.dream_world.front_default)
+    });}, []);
+
+    return (
+        <div className="pokeCard" style={{paddingTop: 10}}>
+            <Card variant="outlined" sx={{maxWidth:380, marginLeft:"auto", marginRight:"auto"}}>
+                <CardMedia
+                    onClick={() => window.open(`https://www.pokemon.com/el/pokedex/${props.name}`)}
+                    component="img"
+                    height="200"
+                    style={{objectFit:"contain"}}
+                    image={imageUrl}
+                    alt={`image ${props.name}`
+                }
+                />
+                <CardContent>
+                    <Typography variant="h5" >
+                        {props.name}
+                    </Typography>
+                </CardContent>
+            </Card>
+        </div>
+    )
 }
 
 export default Pokemon;
