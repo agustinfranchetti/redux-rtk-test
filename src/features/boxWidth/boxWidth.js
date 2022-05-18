@@ -8,8 +8,8 @@ export default function BoxWidth() {
   const dispatch = useDispatch();
   return (
     <div className="BoxWidth">
-      <div class="square" style={{width: width + '%'}}>
-        <p class="text" >El width es {width}</p>
+      <div className="square" style={{width: width + '%'}}>
+        <p className="text" >El width es {width}</p>
       </div >
       <div className="incrementDecrementBtn">
         <Button variant="outlined" color="error" onClick={() => dispatch(widthDecrease())}>decrement</Button>
