@@ -5,6 +5,8 @@ export const pokemonApi = createApi({
     baseQuery: fetchBaseQuery({
       baseUrl: "https://pokeapi.co/api/v2"
     }),
+    //TODO: ver post processing para sacar el .results
+    //TODO ver ''tags'' -> invalidan ciertas llamadas o asignan tagas a ciertas llamadas
     endpoints: (builder) => ({
         getAllPokemon: builder.query({
           query: () => "/pokemon/?limit=9"
@@ -15,4 +17,4 @@ export const pokemonApi = createApi({
       })
   });
   
-export const {useGetAllPokemonQuery, useGetPokemonDataQuery, useLazyGetAllPokemonQuery} = pokemonApi;
+export const {useGetAllPokemonQuery, useGetPokemonDataQuery} = pokemonApi;
