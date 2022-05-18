@@ -4,13 +4,16 @@ import { CardContent } from "@mui/material";
 import { Typography } from "@mui/material";
 import { CardMedia } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useGetPokemonDataQuery } from "./pokemonApi";
+import { useGetPokemonDataQuery, useLazyGetPokemonDataQuery } from "./pokemonApi";
 
 const Pokemon =(props) => {
     const [imageUrl, setImageUrl] = useState(null);
 
-    const { data, isError, isLoading, isFetching } =  useGetPokemonDataQuery(props.name);
-    // console.log(`Pokemon: ${props.name}`, data, isError, isLoading, isFetching )
+    const pokemonName = props.name
+    const { data, isError, isLoading, isFetching } =  useGetPokemonDataQuery(pokemonName);
+    console.log(`Pokemon: ${props.name}`, data, isError, isLoading, isFetching )
+    // const [getPokemonData, result, lastPromiseInfo] =  useLazyGetPokemonDataQuery(pokemonName);
+    // console.log(`Pokemon: ${props.name}`, getPokemonData, result, lastPromiseInfo)
 
     useEffect(() => {
         setImageUrl(data.sprites.front_default)

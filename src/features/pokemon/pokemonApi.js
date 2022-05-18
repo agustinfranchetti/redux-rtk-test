@@ -7,7 +7,7 @@ export const pokemonApi = createApi({
     }),
     endpoints: (builder) => ({
         getAllPokemon: builder.query({
-          query: () => "/pokemon/?limit=10"
+          query: () => "/pokemon/?limit=9"
         }),
         getPokemonData: builder.query({
           query: (pokemonName) => `/pokemon/${pokemonName}`
@@ -15,4 +15,4 @@ export const pokemonApi = createApi({
       })
   });
   
-export const {useGetAllPokemonQuery, useGetPokemonDataQuery} = pokemonApi;
+export const {useGetAllPokemonQuery, useGetPokemonDataQuery, useLazyGetAllPokemonQuery} = pokemonApi;
