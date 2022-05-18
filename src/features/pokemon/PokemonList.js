@@ -7,7 +7,6 @@ export default function PokemonList() {
     // console.log(data, isError, isLoading, isFetching)
     return (
         <div className="PokemonList">
-            
             {data && data.results.map((pokemon) => (
                 <Pokemon 
                     name={pokemon.name}

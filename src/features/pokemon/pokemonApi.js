@@ -9,14 +9,10 @@ export const pokemonApi = createApi({
         getAllPokemon: builder.query({
           query: () => "/pokemon/?limit=10"
         }),
-        getPokemonById: builder.mutation({
-          query: ({ id, ...rest }) => ({
-            url: `/pokemon/${id}`,
-            method: "GET",
-            body: rest
-          })
+        getPokemonData: builder.query({
+          query: (pokemonName) => `/pokemon/${pokemonName}`
         }),
       })
   });
   
-export const {useGetAllPokemonQuery, useGetPokemonByIdMutation} = pokemonApi;
+export const {useGetAllPokemonQuery, useGetPokemonDataQuery} = pokemonApi;

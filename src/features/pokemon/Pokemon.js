@@ -4,16 +4,17 @@ import { CardContent } from "@mui/material";
 import { Typography } from "@mui/material";
 import { CardMedia } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useGetPokemonDataQuery } from "./pokemonApi";
 
 const Pokemon =(props) => {
     const [imageUrl, setImageUrl] = useState(null);
-    //[] al final hace que el useEffect se ejecute luego de montado el componente
+
+    const { data, isError, isLoading, isFetching } =  useGetPokemonDataQuery(props.name);
+    // console.log(`Pokemon: ${props.name}`, data, isError, isLoading, isFetching )
+
     useEffect(() => {
-        fetch(props.url)
-        .then(response => response.json())
-        .then(data => {
-            setImageUrl(data.sprites.front_default)
-    });}, []);
+        setImageUrl(data.sprites.front_default)
+    }, []);
 
     return (
         <div className="pokeCard" style={{paddingTop: 10}}>
